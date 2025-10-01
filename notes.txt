@@ -1,3 +1,0 @@
-our cross compiler:
-  $HOME/opt/cross/bin/$TARGET-gcc --version
-
