@@ -2,32 +2,19 @@ ORG 0x0
 BITS 16
 
 ; loaded at linear address 0x10000
+JMP main
 
+%include "/home/logan/Projects/OS_1/src/bootloader/include/stdio16.inc"
+%include "/home/logan/Projects/OS_1/src/bootloader/include/GDT.inc"
 
 main:
   CLI
-  push cs
-  pop ds  ; make cs = ds
-  JMP print
-  cli
-  HLT
-
-print:
+  PUSH cs
+  POP ds  ; make cs = ds
   MOV si,os_boot_message
-  XOR bh,bh
-
-print_loop:
-  LODSB
-  OR al,al
-  JZ done_print
-
-  MOV ah,0x0E
-  INT 0x10
-
-  JMP print_loop
-
-done_print:
-  RET
+  CALL ASMPrint 
+  CLI 
+  HLT
 
 ; Data section
 
