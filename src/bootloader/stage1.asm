@@ -9,7 +9,7 @@ bits	16						; we are in 16 bit real mode
 
 org	0						; we will set regisers later
 
-start:	jmp	main					; jump to start of bootloader
+start:	jmp	Stage1; jump to start of bootloader
 
 ;*********************************************
 ;	BIOS Parameter Block
@@ -132,7 +132,7 @@ LBACHS:
 ;	Bootloader Entry Point
 ;*********************************************
 
-main:
+Stage1:
 
      ;----------------------------------------------------
      ; code located at 0000:7C00, adjust segment registers

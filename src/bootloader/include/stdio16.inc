@@ -1,3 +1,4 @@
+bits 16
 ;************************************************;
 ; ASMPrint() prints a string
 ;	Prints a string
