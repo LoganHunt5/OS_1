@@ -10,6 +10,9 @@ JMP Stage2
 
 ; Data section
 os_boot_message: DB 'FOUND STAGE 2', 0x0D, 0x0A, 0
+new_line: DB '', 0x0A, 0
+; thirtytwo_success: DB 'Monkey covering eyes emoji', 0x0A, 0
+thirtytwo_success: DB 'Monkey covering eyes emoji',  0
 
 Stage2:
   CLI
@@ -46,6 +49,8 @@ Stage2:
 ; 32 BITS
 BITS 32
 
+%include "/home/logan/Projects/OS_1/src/bootloader/include/vgaASM.inc"
+
 Stage3:
 ; set registers to code segment of gdt
 MOV ax, 0x10
@@ -56,6 +61,12 @@ MOV fs, ax
 MOV gs, ax
 MOV ss, ax
 MOV esp, 0x90000
+
+CALL ClearScreen 
+
+
+MOV ebx, thirtytwo_success
+CALL Puts32
 
 Stop:
   CLI 
