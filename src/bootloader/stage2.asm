@@ -63,8 +63,6 @@ MOV ss, ax
 MOV esp, 0x90000
 
 CALL ClearScreen 
-
-
 MOV ebx, thirtytwo_success
 CALL Puts32
 
