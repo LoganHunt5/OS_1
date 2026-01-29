@@ -25,7 +25,7 @@ LoadRoot:
   ; read root dir
   push word ROOT_SEG
   pop es
-  xor bx, bx
+  mov bx, 0
   call ReadSectors
   pop es
   popa
@@ -134,7 +134,16 @@ LoadFile:
     pop bx
     call ClusterLBA
     xor cx, cx
-    add cl, byte[bpbSectorsPerCluster]
+    mov cl, byte[bpbSectorsPerCluster]
+    call ReadSectors
+    pop ecx
+    inc ecx
+    push ecx
+    push bx
+    push es
+    mov ax, FAT_SEG
+    mov es, ax
+    xor bx, bx
 
   ;compute next cluster
     mov ax, word[cluster]

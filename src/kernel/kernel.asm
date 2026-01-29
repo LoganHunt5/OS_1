@@ -1,8 +1,8 @@
 ; 32 BITS
-ORG 0x10000
+ORG 0x100000
 BITS 32
 
-jpm Stage3
+jmp Stage3
 
 %include "/home/logan/Projects/OS_1/src/bootloader/include/vgaASM.inc"
 thirtytwo_success: DB 'Monkey covering eyes emoji',  0
@@ -12,10 +12,8 @@ Stage3:
 MOV ax, 0x10
 
 MOV ds, ax
-MOV es, ax
-MOV fs, ax
-MOV gs, ax
 MOV ss, ax
+MOV es, ax
 MOV esp, 0x90000
 
 CALL ClearScreen 
