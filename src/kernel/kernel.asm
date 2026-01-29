@@ -5,6 +5,7 @@ BITS 32
 jmp Stage3
 
 %include "/home/logan/Projects/OS_1/src/bootloader/include/vgaASM.inc"
+%include "/home/logan/Projects/OS_1/src/bootloader/include/SysEnterExit.inc"
 thirtytwo_success: DB 'Monkey covering eyes emoji',  0
 
 Stage3:
@@ -19,6 +20,9 @@ MOV esp, 0x90000
 CALL ClearScreen 
 MOV ebx, thirtytwo_success
 CALL Puts32
+
+; setup sysenter and exit
+CALL SetupSysenter
 
 Stop:
   CLI 

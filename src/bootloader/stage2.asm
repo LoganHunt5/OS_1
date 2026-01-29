@@ -13,7 +13,7 @@ JMP Stage2
 %define IMAGE_PMODE_BASE 0x100000
 %define IMAGE_RMODE_BASE 0x3000
 
-ImageName  DB "KERNEL  BIN"
+ImageName  DB "KERNEL     "
 ImageSize DB 0
 os_boot_message: DB 'FOUND STAGE 2', 0x0D, 0x0A, 0
 msgFailure: DB 'COULD NOT FIND KERNEL', 0x0D, 0x0A, 0
